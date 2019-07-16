@@ -245,8 +245,7 @@ createWU_SingleDateURL <- function (station,
 
   #for airport codes
   if(station_type=="airportcode") {
-    airp_url = 'https://www.wunderground.com/history/airport/'
-    coda = '/DailyHistory.html?format=1'    
+    airp_url = 'https://www.wunderground.com/history/daily/'
 
     #If an airportLetterCode is not supplied, try with K
     #If it is, just use that code
@@ -255,9 +254,8 @@ createWU_SingleDateURL <- function (station,
     final_url <- paste0(airp_url, #letterCode, 
                         station,
                         '/',y,
-                        '/',m,
-                        '/',d,
-                        coda)
+                        '-',m,
+                        '-',d)
   }
 
   if(opt_verbose) {
@@ -267,6 +265,7 @@ createWU_SingleDateURL <- function (station,
 
   return(final_url)
 }
+
 
 # Internal utility function
 #called by cleanAndSubetData()
